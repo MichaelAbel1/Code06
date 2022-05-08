@@ -8,6 +8,9 @@ public class News {
     private String mContent;
     private int mImageId;
 
+    private Bitmap image;
+    private String imageUri;
+
 
     public String getTitle() {
         return mTitle;
@@ -39,5 +42,22 @@ public class News {
 
     public void setImageId(int mImageId) {
         this.mImageId = mImageId;
+    }
+
+
+    public Bitmap getImage() {
+        return image;
+    }
+
+    public void setImage(Bitmap image) {
+        this.image = image;
+    }
+
+    public String getImageUri() {
+        return imageUri;
+    }
+
+    public void setImageUri(String imageUri) {
+        this.imageUri = imageUri;
     }
 }

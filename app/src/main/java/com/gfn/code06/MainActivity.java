@@ -1,13 +1,15 @@
 package com.gfn.code06;
 
 import android.content.res.TypedArray;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.gfn.code06.News;
-import com.gfn.code06.NewsAdapter;
+import androidx.collection.ArraySet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,16 +18,47 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String NEWS_ID = "news_id";
     private List<News> newsList = new ArrayList<>();
+    MySQLiteOpenHelper myDbHelper;
+    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initData();
+        myDbHelper = new MySQLiteOpenHelper(MainActivity.this);
+        db = myDbHelper.getReadableDatabase();
+        Cursor cursor = db.query(
+                NewsContract.NewsEntry.TABLE_NAME,
+                null, null, null, null, null, null);
 
-        NewsAdapter newsAdapter = new NewsAdapter(MainActivity.this,
-                R.layout.list_item, newsList);
+        //initData();
+        int titleIndex = cursor.getColumnIndex(
+                NewsContract.NewsEntry.COLUMN_NAME_TITLE);
+        int authorIndex = cursor.getColumnIndex(
+                NewsContract.NewsEntry.COLUMN_NAME_AUTHOR);
+        int imageIndex = cursor.getColumnIndex(
+                NewsContract.NewsEntry.COLUMN_NAME_IMAGE);
+
+        while (cursor.moveToNext()) {
+            News news = new News();
+
+            String title = cursor.getString(titleIndex);
+            String author = cursor.getString(authorIndex);
+            String image = cursor.getString(imageIndex);
+
+            Bitmap bitmap = BitmapFactory.decodeStream(
+                    getClass().getResourceAsStream("/" + image));
+
+            news.setTitle(title);
+            news.setAuthor(author);
+            news.setImage(bitmap);
+            newsList.add(news);
+        }
+        NewsAdapter newsAdapter = new NewsAdapter(
+                MainActivity.this,
+                R.layout.list_item,
+                newsList);
 
         ListView lvNewsList = findViewById(R.id.lv_news_list);
 

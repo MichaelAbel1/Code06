@@ -38,7 +38,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
 
         tvTitle.setText(news.getTitle());
         tvAuthor.setText(news.getAuthor());
-        ivImage.setImageResource(news.getImageId());
+        ivImage.setImageBitmap(news.getImage());
         return view;
     }
 }
