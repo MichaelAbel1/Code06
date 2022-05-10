@@ -32,18 +32,8 @@ public class LoginActivity extends AppCompatActivity
         etAccount = findViewById(R.id.et_account);
         cbRememberPwd = findViewById(R.id.cb_remember_pwd);
         Button btLogin = findViewById(R.id.bt_login);
+        btLogin.setOnClickListener(this);
 
-        btLogin.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(LoginActivity.this,
-                        MainActivity.class);
-                startActivity(intent);
-
-            }
-        });
 
         /*加载账号密码*/
         String spFileName = getResources()
@@ -95,6 +85,14 @@ public class LoginActivity extends AppCompatActivity
                 }
             }
         });
+//        btLogin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+
+//
+//            }
+//        });
     }
 
     @Override
@@ -126,5 +124,9 @@ public class LoginActivity extends AppCompatActivity
             editor.remove(rememberPasswordKey);
         }
         editor.apply();
+        Intent intent = new Intent(LoginActivity.this,
+                MainActivity.class);
+        startActivity(intent);
     }
+
 }

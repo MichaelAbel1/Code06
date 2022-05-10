@@ -3,9 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android/Projects/Code06/app/src/main/res/drawable/btn_selector.xml" value="0.1255" />
         <entry key="..\:/Android/Projects/Code06/app/src/main/res/drawable/ic_baseline_visibility_off_24.xml" value="0.1" />
-        <entry key="..\:/Android/Projects/Code06/app/src/main/res/layout/activity_login.xml" value="0.182518115942029" />
-        <entry key="..\:/Android/Projects/Code06/app/src/main/res/layout/activity_main.xml" value="0.18297101449275363" />
+        <entry key="..\:/Android/Projects/Code06/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Android/Projects/Code06/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Android/Projects/Code06/app/src/main/res/layout/list_item.xml" value="0.1" />
         <entry key="..\:/Android/Projects/Code06/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.201" />
         <entry key="..\:/Android/Projects/Code06/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.201" />
